@@ -5,6 +5,7 @@ use Phalcon\Di\FactoryDefault;
 use Phalcon\Mvc\View;
 use Phalcon\Mvc\Application;
 use Phalcon\Mvc\Url as UrlProvider;
+use Phalcon\Db\Adapter\Pdo\Mysql as PdoMysql;
 
 try {
     
@@ -17,6 +18,16 @@ try {
     
     // DI Container
     $di = new FactoryDefault();
+    
+    // Connect with the db
+    $di->set('db', function() {
+        return new PdoMysql(Array(
+            'host'     => 'localhost',
+            'username' => 'root',
+            'password' => 'root',
+            'dbname'   => 'phonebook'
+        ));
+    });
     
     // Register the view service
     $di->set('view', function() {

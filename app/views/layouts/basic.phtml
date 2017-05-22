@@ -7,9 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    
     <title>Phonebook - <?php echo $title; ?></title>
     
     <!-- Boostrap 3.3.7 css -->
@@ -17,14 +14,16 @@
     
     <!-- Custom Fonts and Icons with Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css">
-     
+    
+    <link rel="stylesheet" type="text/css" 
+          href="<?php echo asset_timed('/css/style.css'); ?>">
+    
 </head>
 <body>
     
     <main id="app">
         <?php echo $this->getContent(); ?>
     </main>
-    
     
     <!-- jQuery integration -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">

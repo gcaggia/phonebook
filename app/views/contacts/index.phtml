@@ -1,12 +1,20 @@
 <div class="container">
+    <?php echo $this->getContent() ?>
     <h1><?php echo $title; ?></h1>
     <hr>
+    <?php echo $this->tag->linkTo(array(
+        'contacts/new', 
+        '<i class="fa fa-plus-square" aria-hidden="true"></i> Add New Contact',
+        'class' => 'btn btn-success btn-add-contact'
+    )) ?>
+    
     <table class="table table-striped table-hover">
         <thead>
             <tr>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Phone</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -15,6 +23,17 @@
                     <td><?php echo $contact->name; ?></td>
                     <td><?php echo $contact->email; ?></td>
                     <td><?php echo $contact->phone; ?></td>
+                    <td><?php echo $this->tag->linkTo(array(
+                            'contacts/edit/' . $contact->id, 
+                            '<i class="fa fa-edit" aria-hidden="true"></i> Edit',
+                            'class' => 'btn btn-info btn-edit-contact'
+                        )) ?>
+                    <?php echo $this->tag->linkTo(array(
+                            'contacts/delete/' . $contact->id, 
+                            '<i class="fa fa-minus-circle" aria-hidden="true"></i> Delete',
+                            'class' => 'btn btn-warning btn-delete-contact'
+                        )) ?>
+                    </td>
                 </tr>
             <?php endforeach ?>
         </tbody>
